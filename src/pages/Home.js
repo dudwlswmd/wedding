@@ -20,8 +20,6 @@ const Home = () => {
   const mainVideo = require('../assets/video/light.mp4');
   const happyBirthdayVideo = require('../assets/video/happy.mp4');
   const img01 = require('../assets/images/01.jpeg');
-  const img02 = require('../assets/images/02.jpeg');
-  const img03 = require('../assets/images/03.jpeg');
   const img04 = require('../assets/images/04.jpeg');
   const img05 = require('../assets/images/05.jpeg');
   const img06 = require('../assets/images/06.jpeg');
@@ -399,7 +397,7 @@ const Home = () => {
               </Swiper>
             </div>
           </div>
-          <ul className="home__gallery__grid" role="list">
+          <ul className="home__gallery__grid">
             {visibleImages.map((img, idx) => (
               <li
                 key={img.id}
@@ -622,7 +620,7 @@ const Home = () => {
                 <strong></strong>
               </p>
             </div>
-            <ul className="contact__list" role="list">
+            <ul className="contact__list">
               {contacts.map((c) => (
                 <li key={c.id} className="contact__item">
                   <div className="contact__who">
