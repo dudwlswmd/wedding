@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+# My React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React Router와 체계적인 폴더 구조를 사용한 React 애플리케이션입니다.
 
-## Available Scripts
+## 프로젝트 구조
 
-In the project directory, you can run:
+```
+src/
+├── components/     # 재사용 가능한 컴포넌트
+│   ├── Button.js
+│   └── Card.js
+├── pages/         # 페이지 컴포넌트
+│   ├── Home.js
+│   ├── About.js
+│   └── Contact.js
+├── layouts/       # 레이아웃 컴포넌트
+│   ├── Header.js
+│   ├── Footer.js
+│   └── Layout.js
+├── styles/        # CSS 스타일 파일들
+│   ├── Header.css
+│   ├── Footer.css
+│   ├── Layout.css
+│   ├── Button.css
+│   ├── Card.css
+│   ├── Home.css
+│   ├── About.css
+│   └── Contact.css
+├── assets/        # 정적 파일들
+│   ├── images/    # 이미지 파일
+│   └── icons/     # 아이콘 파일
+├── hooks/         # 커스텀 훅
+│   └── useLocalStorage.js
+├── utils/         # 유틸리티 함수
+│   └── helpers.js
+└── constants/     # 상수 정의
+    └── index.js
+```
 
-### `npm start`
+## 주요 기능
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React Router**: 페이지 라우팅
+- **컴포넌트 기반 구조**: 재사용 가능한 컴포넌트
+- **반응형 디자인**: 모바일 친화적 레이아웃
+- **모듈화된 스타일**: 각 컴포넌트별 CSS 파일
+- **유틸리티 함수**: 헬퍼 함수들
+- **커스텀 훅**: 로컬 스토리지 관리
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 시작하기
 
-### `npm test`
+### 설치
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm install
+```
 
-### `npm run build`
+### 개발 서버 실행
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+브라우저에서 [http://localhost:3000](http://localhost:3000)을 열어 확인하세요.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 빌드
 
-### `npm run eject`
+```bash
+npm run build
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 사용된 기술
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- React 19.1.0
+- React Router DOM
+- CSS3
+- JavaScript ES6+
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 페이지
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **홈** (`/`): 메인 페이지
+- **소개** (`/about`): 소개 페이지
+- **연락처** (`/contact`): 연락처 페이지
 
-## Learn More
+## 컴포넌트
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 재사용 가능한 컴포넌트
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Button**: 다양한 스타일과 크기의 버튼
+- **Card**: 카드 형태의 컨테이너
 
-### Code Splitting
+### 레이아웃 컴포넌트
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Header**: 네비게이션 헤더
+- **Footer**: 푸터
+- **Layout**: 전체 레이아웃 래퍼
 
-### Analyzing the Bundle Size
+## 스타일 가이드
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 색상
 
-### Making a Progressive Web App
+- Primary: #007bff
+- Secondary: #6c757d
+- Success: #28a745
+- Danger: #dc3545
+- Warning: #ffc107
+- Info: #17a2b8
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 반응형 브레이크포인트
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 모바일: 768px 이하
+- 태블릿: 768px - 1024px
+- 데스크톱: 1024px 이상

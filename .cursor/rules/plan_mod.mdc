@@ -1,0 +1,82 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Rule: plan-mode-doc-generation
+
+## Description
+
+When a developer uses the keyword `plan mode`, a feature specification document should automatically be created in the `docs/` directory. The file name should be based on the feature name provided by the user.
+
+## Always
+
+* Detect usage of the keyword `plan mode`.
+* When detected, extract the feature name from the input (e.g., `plan mode: login system` → feature = `login system`).
+* Generate a markdown file at path: `docs/<feature-name>.md`.
+* The file **must be written in Korean**, and include structured sections as follows:
+
+  * `## 기능명 (Feature Name)`
+  * `## 목적 (Purpose)`
+  * `## 요구사항 (Requirements)`
+  * `## API 인터페이스 (API Interfaces)`
+  * `## UI/UX 참고사항 (UI/UX Notes)`
+  * `## 엣지 케이스 (Edge Cases)`
+  * `## 관련 태스크 (Related Tasks)`
+
+## Example
+
+Input:
+
+```
+plan mode: user profile editor
+```
+
+Result:
+
+* File created: `docs/user-profile-editor.md`
+* Contents:
+
+```md
+## 기능명 (Feature Name)
+User Profile Editor
+
+## 목적 (Purpose)
+사용자가 자신의 프로필 정보를 쉽게 편집할 수 있도록 한다.
+
+## 요구사항 (Requirements)
+- 사용자 이름, 소개, 프로필 사진을 수정 가능해야 함
+- 프론트엔드에서 입력값 유효성 검사
+- 백엔드 API와 동기화
+
+## API 인터페이스 (API Interfaces)
+- `GET /user/profile`
+- `PUT /user/profile`
+
+## UI/UX 참고사항 (UI/UX Notes)
+- 상세 정보와 보안 설정을 위한 탭 인터페이스 사용
+- 입력 오류 발생 시 인라인 메시지 표시
+
+## 엣지 케이스 (Edge Cases)
+- 필드 미입력
+- 서버 응답 지연 또는 실패
+- 이미지 업로드 실패
+
+## 관련 태스크 (Related Tasks)
+- FE-102
+- BE-209
+```
+
+## Objective (AI-friendly language)
+
+When someone says “plan mode”, it means: “create a structured spec document automatically.”
+
+Let the AI:
+
+* recognize the intent
+* extract the feature name
+* place the markdown file in the right folder
+* write predictable section headers
+* write content in **Korean** for the spec document
+
+This makes team collaboration smoother and lets devs focus on implementation.

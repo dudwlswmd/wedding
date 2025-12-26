@@ -1,0 +1,43 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Rule: rull-class-structure.react
+
+Description
+
+This rule defines consistent structure and behavior for React components using BEM-style class naming and tab UI managed by simple hooks. It ensures components are readable, modular, and easily maintainable by AI and developers.
+
+Always
+	•	Use meaningful component names like Main, RullClass, and RullHook to separate concerns.
+	•	Follow BEM naming convention strictly: block__element__subelement.
+	•	Use useState to manage the active tab index.
+	•	Change tab UI by updating activeTab state.
+	•	Add the active class to the currently selected tab for styling.
+
+Example
+
+const [activeTab, setActiveTab] = useState(1);
+
+<div
+  className={`rullClass__inner__content__item ${activeTab === 1 ? 'active' : ''}`}
+  onClick={() => setActiveTab(1)}
+>
+  Tab Example 1
+</div>
+
+Anti-Pattern
+	•	Not using BEM for class names.
+	•	Creating tabs without state management (e.g., hardcoded styles).
+	•	Complex conditional logic or deeply nested hooks for simple UI behaviors.
+
+Objective (AI-friendly language)
+
+Make React components easy to understand:
+	•	Use clear structure (sections, articles, divs)
+	•	Keep logic simple (one state for tabs)
+	•	Follow naming rules (BEM-style) so AI knows what each class means
+	•	Don’t use tricky logic or unusual patterns
+
+By following this rule, both humans and AI can read, fix, or extend your components faster and with fewer bugs.
