@@ -53,6 +53,7 @@ const Home = () => {
   const [showContact, setShowContact] = useState(false);
   const [closingContact, setClosingContact] = useState(false);
   const [copiedField, setCopiedField] = useState(null);
+  const scrollLockRef = useRef(null);
 
   const contacts = [
     { id: 'ct-syg', label: '신랑 아버지', name: '송의권', phone: '010-8893-3103' },
@@ -209,6 +210,55 @@ const Home = () => {
     };
   }, []);
 
+  // 인트로 동안 스크롤 잠금, 종료 시 복원
+  useEffect(() => {
+    const preventTouch = (e) => e.preventDefault();
+    const isIntroVisible = showIntroA || showIntroB;
+    if (isIntroVisible) {
+      if (!scrollLockRef.current) {
+        scrollLockRef.current = {
+          overflow: document.body.style.overflow,
+          touchAction: document.body.style.touchAction,
+          overscrollBehavior: document.body.style.overscrollBehavior,
+        };
+      }
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+      document.body.style.overscrollBehavior = 'contain';
+      window.addEventListener('touchmove', preventTouch, { passive: false });
+      return () => {
+        window.removeEventListener('touchmove', preventTouch);
+      };
+    }
+    // restore when intro hidden
+    if (scrollLockRef.current) {
+      document.body.style.overflow = scrollLockRef.current.overflow || '';
+      document.body.style.touchAction = scrollLockRef.current.touchAction || '';
+      document.body.style.overscrollBehavior = scrollLockRef.current.overscrollBehavior || '';
+      scrollLockRef.current = null;
+    }
+    return undefined;
+  }, [showIntroA, showIntroB]);
+
+  // 스크롤 시 순차 페이드인
+  useEffect(() => {
+    const elements = Array.from(document.querySelectorAll('.home__reveal'));
+    if (elements.length === 0) return undefined;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -10% 0px' }
+    );
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   const handleCopyAccount = async (text, id) => {
     try {
       await navigator.clipboard.writeText(text);
@@ -277,7 +327,7 @@ const Home = () => {
           <p className='home__container__visuer__text-center'>JAN</p>
           <p className='home__container__visuer__text-right'>2026</p>
         </section>
-        <section className="home__hero">
+        <section className="home__hero home__reveal">
             <span className="home__hero__overline">INVITATION</span>
             <p className='home__hero__names'>
               소중한 분들을 초대합니다.
@@ -293,7 +343,7 @@ const Home = () => {
             </p>
         </section>
 
-        <section className="home__section home__families">
+        <section className="home__section home__families home__reveal">
           <div className="home__families__row">
             <span className="home__families__parents">송의권</span>
             <span className="home__families__dot">·</span>
@@ -318,13 +368,13 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="home__number">
+        <section className="home__number home__reveal">
           <p className="home__number__text" role="button" tabIndex={0} onClick={openContact}>
             연락하기
           </p>
         </section>
 
-        <section className="home__section home__cover">
+        <section className="home__section home__cover home__reveal">
           <img className="home__cover" src={img01} alt="커버 이미지" loading="lazy" />
           <video 
             className='home__cover__video' 
@@ -342,7 +392,7 @@ const Home = () => {
 
 
 
-        <section className="home__section home__countdown">
+        <section className="home__section home__countdown home__reveal">
           <div className="home__section__title">D-DAY</div>
           <div className="home__countdown__digits">
             <div className="home__countdown__box">
@@ -369,7 +419,7 @@ const Home = () => {
 
 
 
-        <section className="home__section home__gallery">
+        <section className="home__section home__gallery home__reveal">
           <div className="home__section__title">
             <span>GALLERY</span>
             가족갤러리
@@ -435,7 +485,7 @@ const Home = () => {
           )}
         </section>
 
-        <section className="home__section date">
+        <section className="home__section date home__reveal">
           <div className="home__section__title">
             <span>2026.01.24</span>
             토요일 낮 2시 
@@ -468,7 +518,7 @@ const Home = () => {
            </table>
         </section>
 
-        <section className="home__section home__location">
+        <section className="home__section home__location home__reveal">
           <div className="home__section__title">오시는 길</div>
           <img className="home__location__image" src={mapImage} alt="location" />
           <div className="home__card home__location__card">
@@ -515,7 +565,7 @@ const Home = () => {
         </section>
 
 
-        <section className="home__section home__accounts">
+        <section className="home__section home__accounts home__reveal">
           <div className="home__section__title">
             <span>ACCOUNT</span>
             마음 전하실 곳
@@ -572,7 +622,7 @@ const Home = () => {
           </div> */}
         </section>
 
-        <footer className="home__footer">
+        <footer className="home__footer home__reveal">
           <p className="home__footer__text">와 주셔서 감사합니다.</p>
         </footer>
       </div>
