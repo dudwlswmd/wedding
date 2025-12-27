@@ -346,6 +346,7 @@ const Home = () => {
         </div>
       )}
       <div className={`home__content ${contentVisible ? 'is-visible' : ''}`}>
+      <div className={`home__content ${(!showIntroA && !showIntroB) ? 'is-visible' : ''}`}>
       <div className="home__container">
         <section className='home__container__visuer'>
           <img 
@@ -663,6 +664,7 @@ const Home = () => {
         <footer className="home__footer home__reveal">
           <p className="home__footer__text">와 주셔서 감사합니다.</p>
         </footer>
+      </div>
       </div>
       </div>
 

@@ -1206,13 +1206,15 @@
   transform: translateY(0);
 }
 
-/* Main content fade-in after intro */
-.home__content {
-  opacity: 0;
-  transition: opacity 600ms ease;
-}
+/* Main content fade-in after intro (no layout before visible) */
+.home__content { display: none; }
 .home__content.is-visible {
-  opacity: 1;
+  display: block;
+  animation: homeContentFade 600ms ease forwards;
+}
+@keyframes homeContentFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* Calendar (Date section) */
