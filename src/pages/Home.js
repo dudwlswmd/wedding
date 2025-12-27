@@ -317,11 +317,6 @@ const Home = () => {
     }
   };
 
-  const openViewer = (index) => {
-    setViewerIndex(index);
-    setViewerOpen(true);
-  };
-
   const closeViewer = () => {
     setViewerOpen(false);
   };
