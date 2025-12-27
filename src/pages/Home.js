@@ -212,7 +212,7 @@ const Home = () => {
 
   // 인트로 동안 스크롤 잠금, 종료 시 복원
   useEffect(() => {
-    const preventTouch = (e) => e.preventDefault();
+    const preventDefault = (e) => e.preventDefault();
     const isIntroVisible = showIntroA || showIntroB;
     if (isIntroVisible) {
       if (!scrollLockRef.current) {
@@ -220,21 +220,57 @@ const Home = () => {
           overflow: document.body.style.overflow,
           touchAction: document.body.style.touchAction,
           overscrollBehavior: document.body.style.overscrollBehavior,
+          position: document.body.style.position,
+          top: document.body.style.top,
+          left: document.body.style.left,
+          right: document.body.style.right,
+          width: document.body.style.width,
+          htmlOverflow: document.documentElement.style.overflow,
+          htmlOverscroll: document.documentElement.style.overscrollBehavior,
+          htmlHeight: document.documentElement.style.height,
+          scrollY: window.scrollY,
         };
       }
+      // lock root
+      document.documentElement.style.overflow = 'hidden';
+      document.documentElement.style.overscrollBehavior = 'none';
+      document.documentElement.style.height = '100%';
+      // lock body (iOS Safari fix: position:fixed with stored scrollY)
       document.body.style.overflow = 'hidden';
       document.body.style.touchAction = 'none';
-      document.body.style.overscrollBehavior = 'contain';
-      window.addEventListener('touchmove', preventTouch, { passive: false });
+      document.body.style.overscrollBehavior = 'none';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollLockRef.current.scrollY || 0}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
+      // prevent scroll events
+      window.addEventListener('touchmove', preventDefault, { passive: false });
+      window.addEventListener('wheel', preventDefault, { passive: false });
       return () => {
-        window.removeEventListener('touchmove', preventTouch);
+        window.removeEventListener('touchmove', preventDefault);
+        window.removeEventListener('wheel', preventDefault);
       };
     }
     // restore when intro hidden
     if (scrollLockRef.current) {
+      // restore root
+      document.documentElement.style.overflow = scrollLockRef.current.htmlOverflow || '';
+      document.documentElement.style.overscrollBehavior = scrollLockRef.current.htmlOverscroll || '';
+      document.documentElement.style.height = scrollLockRef.current.htmlHeight || '';
+      // restore body
       document.body.style.overflow = scrollLockRef.current.overflow || '';
       document.body.style.touchAction = scrollLockRef.current.touchAction || '';
       document.body.style.overscrollBehavior = scrollLockRef.current.overscrollBehavior || '';
+      document.body.style.position = scrollLockRef.current.position || '';
+      const topValue = scrollLockRef.current.top || '';
+      document.body.style.top = '';
+      document.body.style.left = scrollLockRef.current.left || '';
+      document.body.style.right = scrollLockRef.current.right || '';
+      document.body.style.width = scrollLockRef.current.width || '';
+      // restore scroll position
+      const prevY = topValue ? Math.abs(parseInt(topValue, 10)) : (scrollLockRef.current.scrollY || 0);
+      window.scrollTo(0, prevY);
       scrollLockRef.current = null;
     }
     return undefined;
