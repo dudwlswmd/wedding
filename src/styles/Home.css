@@ -48,14 +48,14 @@
     color: #fff;
     font-size: 40px;
     font-weight: 800;
-    font-size: 7em;
+    font-size: 4em;
     text-align: center;
     line-height: 1em;
   }
   .home__container__visuer__text-left{
     position: absolute;
-    bottom: 0;
-    left: 32px;
+    bottom: -8px;
+    left: 16px;
     transform: translate(0%, -50%);
     color: #fff;
     font-size: 20px;
@@ -63,7 +63,7 @@
   }
   .home__container__visuer__text-center{
     position: absolute;
-    bottom: 0;
+    bottom: -8px;
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
@@ -72,8 +72,8 @@
   }
   .home__container__visuer__text-right{
     position: absolute;
-    bottom: 0;
-    right: 32px;
+    bottom: -8px;
+    right: 16px;
     transform: translate(0%, -50%);
     color: #fff;
     font-size: 20px;
@@ -1207,22 +1207,20 @@
 }
 
 /* Main content fade-in after intro (no layout before visible) */
-.home__content { 
+.home__content {
   display: none;
   opacity: 0;
   height: 0;
   overflow: hidden;
- }
+}
 .home__content.is-visible {
   display: block;
-  opacity: 1;
   height: auto;
-  /* overflow: visible; */
-  /* animation: homeContentFade 600ms ease forwards; */
+  animation: homeContentFade 600ms ease forwards;
 }
 @keyframes homeContentFade {
-  from {display: none; opacity: 0; }
-  to { display: block; opacity: 1; }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* Calendar (Date section) */
