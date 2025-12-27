@@ -54,6 +54,7 @@ const Home = () => {
   const [closingContact, setClosingContact] = useState(false);
   const [copiedField, setCopiedField] = useState(null);
   const scrollLockRef = useRef(null);
+  const contentVisible = !showIntroA && !showIntroB;
 
   const contacts = [
     { id: 'ct-syg', label: '신랑 아버지', name: '송의권', phone: '010-8893-3103' },
@@ -344,6 +345,7 @@ const Home = () => {
           </h2>
         </div>
       )}
+      <div className={`home__content ${contentVisible ? 'is-visible' : ''}`}>
       <div className="home__container">
         <section className='home__container__visuer'>
           <img 
@@ -661,6 +663,7 @@ const Home = () => {
         <footer className="home__footer home__reveal">
           <p className="home__footer__text">와 주셔서 감사합니다.</p>
         </footer>
+      </div>
       </div>
 
       {viewerOpen && (
