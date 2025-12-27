@@ -1207,10 +1207,18 @@
 }
 
 /* Main content fade-in after intro (no layout before visible) */
-.home__content { display: none; }
+.home__content { 
+  display: none;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+ }
 .home__content.is-visible {
   display: block;
-  animation: homeContentFade 600ms ease forwards;
+  opacity: 1;
+  height: auto;
+  /* overflow: visible; */
+  /* animation: homeContentFade 600ms ease forwards; */
 }
 @keyframes homeContentFade {
   from {display: none; opacity: 0; }

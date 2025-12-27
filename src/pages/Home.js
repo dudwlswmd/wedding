@@ -55,6 +55,7 @@ const Home = () => {
   const [copiedField, setCopiedField] = useState(null);
   const scrollLockRef = useRef(null);
   const contentVisible = !showIntroA && !showIntroB;
+  const [contentShown, setContentShown] = useState(false);
 
   const contacts = [
     { id: 'ct-syg', label: '신랑 아버지', name: '송의권', phone: '010-8893-3103' },
@@ -296,6 +297,16 @@ const Home = () => {
     return () => observer.disconnect();
   }, []);
 
+  // 인트로 종료 후 본문 표시를 800ms 지연
+  useEffect(() => {
+    if (contentVisible) {
+      const t = setTimeout(() => setContentShown(true), 800);
+      return () => clearTimeout(t);
+    }
+    setContentShown(false);
+    return undefined;
+  }, [contentVisible]);
+
   const handleCopyAccount = async (text, id) => {
     try {
       await navigator.clipboard.writeText(text);
@@ -346,7 +357,7 @@ const Home = () => {
         </div>
       )}
       <div className={`home__content ${contentVisible ? 'is-visible' : ''}`}>
-      <div className={`home__content ${(!showIntroA && !showIntroB) ? 'is-visible' : ''}`}>
+      <div className={`home__content ${contentShown ? 'is-visible' : ''}`}>
       <div className="home__container">
         <section className='home__container__visuer'>
           <img 
