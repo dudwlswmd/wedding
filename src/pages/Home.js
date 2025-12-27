@@ -356,6 +356,7 @@ const Home = () => {
           </h2>
         </div>
       )}
+      
       <div className={`home__content ${contentVisible ? 'is-visible' : ''}`}>
       <div className={`home__content ${contentShown ? 'is-visible' : ''}`}>
       <div className="home__container">
