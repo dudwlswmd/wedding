@@ -399,7 +399,7 @@ const Home = () => {
           </div>
           <div className="home__families__row">
           <span className="home__families__parents">송윤제</span>
-            <span className="home__families__dot">·</span>
+            <span className="home__families__dot"> · </span>
             <span className="home__families__parents">파울라</span>
             <span className="home__families__suffix">의 딸 </span>
             <span className="home__families__child"> 송 훌리아</span>
