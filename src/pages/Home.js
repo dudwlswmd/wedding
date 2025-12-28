@@ -59,8 +59,8 @@ const Home = () => {
 
   const contacts = [
     { id: 'ct-syg', label: '신랑 아버지', name: '송의권', phone: '010-8893-3103' },
-    { id: 'ct-aunt', label: '신랑 어머니', name: '큰엄마', phone: '010-2345-6789' },
-    { id: 'ct-groom', label: '신랑', name: '송윤재', phone: '010-3456-7890' },
+    { id: 'ct-aunt', label: '신랑 어머니', name: '안정자', phone: '010-2345-6789' },
+    { id: 'ct-groom', label: '신랑', name: '송윤제', phone: '010-3456-7890' },
   ];
 
   const openContact = () => {
@@ -99,7 +99,7 @@ const Home = () => {
 
   // 레퍼런스 카드 데이터(동일한 분위기와 섹션)
   const weddingInfo = {
-    groom: { name: '송윤재', phone: '01000000000', father: '송의권', mother: '큰엄마' },
+    groom: { name: '송윤제', phone: '01000000000', father: '송의권', mother: '안정자' },
     bride: { name: '이미현', phone: '01000000000', father: '이남일', mother: '최선자' },
     date: '2026.01.24 토요일',
     dateISO: '2026-01-24T00:00:00+09:00',
@@ -123,8 +123,8 @@ const Home = () => {
 
   const accounts = [
     { id: 'groom-father', side: 'groom', holder: '송의권', bank: '기업은행', number: '02702386502020' },
-    { id: 'groom-mother', side: 'groom', holder: '큰엄마', bank: '국민은행', number: '801210686637' },
-    { id: 'groom', side: 'groom', holder: '송윤재', bank: '카카오뱅크', number: '3333-130303-305' },
+    { id: 'groom-mother', side: 'groom', holder: '안정자', bank: '국민은행', number: '801210686637' },
+    { id: 'groom', side: 'groom', holder: '송윤제', bank: '카카오뱅크', number: '3333-130303-305' },
     { id: 'bride-father', side: 'bride', holder: '이남일', bank: 'SC제일은행', number: '65820135518' },
     { id: 'bride-mother', side: 'bride', holder: '최선자', bank: '국민은행', number: '810210418001' },
     { id: 'bride', side: 'bride', holder: '이미현', bank: '카카오뱅크', number: '3333-119961-609' },
@@ -378,13 +378,20 @@ const Home = () => {
               소중한 분들을 초대합니다.
             </p>
             <p className='home__hero__txt'>
-            타국에서 서로를 의지하며 지내다 어느새 둘이 아닌 셋이 되어 고국으로 돌아왔습니다.
+            타국에서 서로를 의지하며 지내다 
+            <br />
+            어느새 둘이 아닌 셋이 되어 
+            <br />
+            고국으로 돌아왔습니다.
             <br />
             <br />
-            늦은 결혼식과 아이의 첫 생일을 겸하여 그리웠던 분들을 모시고 따뜻한 밥 한 끼 대접하려 합니다.
+            늦은 결혼식과 아이의 첫 생일을 겸하여 
+            <br />그리웠던 분들을 모시고 
+            <br />따뜻한 밥 한 끼 대접하려 합니다.
             <br />
             <br />
-            저희 세 식구의 새로운 출발을 격려해 주시면 더없는 기쁨으로 간직하겠습니다.
+            저희 세 식구의 새로운 출발을 격려해 
+            <br />주시면 더없는 기쁨으로 간직하겠습니다.
             </p>
         </section>
 
@@ -392,9 +399,9 @@ const Home = () => {
           <div className="home__families__row">
             <span className="home__families__parents">송의권</span>
             <span className="home__families__dot">·</span>
-            <span className="home__families__parents">큰엄마</span>
+            <span className="home__families__parents">안정자</span>
             <span className="home__families__suffix">의 아들</span>
-            <span className="home__families__child">신랑 송윤재</span>
+            <span className="home__families__child">신랑 송윤제</span>
           </div>
           <div className="home__families__row">
             <span className="home__families__child">신부 파울라 인환테스 산체스</span>
@@ -405,11 +412,11 @@ const Home = () => {
             <span className="home__families__child">{weddingInfo.bride.name}</span> */}
           </div>
           <div className="home__families__row">
-          <span className="home__families__parents">송윤재</span>
+          <span className="home__families__parents">송윤제</span>
             <span className="home__families__dot">·</span>
             <span className="home__families__parents">파울라</span>
             <span className="home__families__suffix">의 딸</span>
-            <span className="home__families__child">훌리아송</span>
+            <span className="home__families__child">송 훌리아</span>
           </div>
         </section>
 
@@ -610,7 +617,7 @@ const Home = () => {
         </section>
 
 
-        <section className="home__section home__accounts home__reveal">
+        {/* <section className="home__section home__accounts home__reveal">
           <div className="home__section__title">
             <span>ACCOUNT</span>
             마음 전하실 곳
@@ -626,7 +633,6 @@ const Home = () => {
               감사합니다.
           </p>
           <div className="home__accounts__group">
-            {/* <div className="home__accounts__group__title">신랑측</div> */}
             <div className="home__accounts__list">
               {accounts.filter(a => a.side === 'groom').map((acc) => (
                 <div key={acc.id} className={`home__card home__accounts__item ${copiedAccountId === acc.id ? 'active' : ''}`}>
@@ -645,27 +651,8 @@ const Home = () => {
               ))}
             </div>
           </div>
-          {/* <div className="home__accounts__group">
-            <div className="home__accounts__group__title">신부측</div>
-            <div className="home__accounts__list">
-              {accounts.filter(a => a.side === 'bride').map((acc) => (
-                <div key={acc.id} className={`home__card home__accounts__item ${copiedAccountId === acc.id ? 'active' : ''}`}>
-                  <div className="home__accounts__item__top">
-                    <span className="home__accounts__item__holder">{acc.holder}</span>
-                    <span className="home__accounts__item__bank">{acc.bank}</span>
-                  </div>
-                  <div className="home__accounts__item__number">{acc.number}</div>
-                  <button
-                    className="home__button home__button--copy"
-                    onClick={() => handleCopyAccount(`${acc.bank} ${acc.number} (${acc.holder})`, acc.id)}
-                  >
-                    {copiedAccountId === acc.id ? '복사됨' : '복사하기'}
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div> */}
-        </section>
+
+        </section> */}
 
         <footer className="home__footer home__reveal">
           <p className="home__footer__text">와 주셔서 감사합니다.</p>

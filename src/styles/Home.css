@@ -837,10 +837,15 @@
   object-fit: cover;
   display: block;
 }
-.home__gallery__grid__item.active {
-  outline: 2px solid #0f172a;
-  outline-offset: 0;
-  box-shadow: 0 0 0 2px #0f172a inset;
+.home__gallery__grid__item{
+  transition:0.3s;
+  border: 2px solid transparent;
+  &.active {
+    /* outline: 2px solid #0f172a; */
+    border: 2px solid #0f172a;
+    outline-offset: 0;
+    box-shadow: 0 0 0 2px #0f172a inset;
+  }
 }
 
 /* Gallery enter animation for '더보기' */
