@@ -379,14 +379,18 @@ const Home = () => {
 
         <section className="home__section home__families home__reveal">
           <div className="home__families__row">
-            <span className="home__families__parents">송의권</span>
-            <span className="home__families__dot">·</span>
-            <span className="home__families__parents">안정자</span>
-            <span className="home__families__suffix">의 아들</span>
-            <span className="home__families__child">신랑 송윤제</span>
+            <p>
+              <span className="home__families__parents">송의권</span>
+              <span className="home__families__dot"> · </span>
+              <span className="home__families__parents">안정자</span>
+              <span className="home__families__suffix">의</span>
+            </p>
+            <span className="home__families__suffix">아들 </span>
+            <span className="home__families__child"> 신랑 송윤제</span>
           </div>
           <div className="home__families__row">
-            <span className="home__families__child">신부 파울라 인환테스 산체스</span>
+            <span className="home__families__parents">며느리</span>
+            <span className="home__families__child"> 신부 파울라 인환테스 산체스</span>
             {/* <span className="home__families__parents">{weddingInfo.bride.father}</span>
             <span className="home__families__dot">·</span>
             <span className="home__families__parents">{weddingInfo.bride.mother}</span>
@@ -397,8 +401,8 @@ const Home = () => {
           <span className="home__families__parents">송윤제</span>
             <span className="home__families__dot">·</span>
             <span className="home__families__parents">파울라</span>
-            <span className="home__families__suffix">의 딸</span>
-            <span className="home__families__child">송 훌리아</span>
+            <span className="home__families__suffix">의 딸 </span>
+            <span className="home__families__child"> 송 훌리아</span>
           </div>
         </section>
 
