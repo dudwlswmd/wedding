@@ -58,8 +58,8 @@ const Home = () => {
 
   const contacts = [
     { id: 'ct-syg', label: '신랑 아버지', name: '송의권', phone: '010-8893-3103' },
-    { id: 'ct-aunt', label: '신랑 어머니', name: '안정자', phone: '010-2345-6789' },
-    { id: 'ct-groom', label: '신랑', name: '송윤제', phone: '010-3456-7890' },
+    { id: 'ct-aunt', label: '신랑 어머니', name: '안정자', phone: '010-4880-3106' },
+    // { id: 'ct-groom', label: '신랑', name: '송윤제', phone: '010-3456-7890' },
   ];
 
   const openContact = () => {
