@@ -39,7 +39,6 @@ const Home = () => {
   const img20 = require('../assets/images/20.jpeg');
   const img21 = require('../assets/images/21.png');
 
-  const [copiedAccountId, setCopiedAccountId] = useState(null);
   const [countdown, setCountdown] = useState({ d: '00', h: '00', m: '00', s: '00' });
   const [viewerOpen, setViewerOpen] = useState(false);
   const [viewerIndex, setViewerIndex] = useState(0);
@@ -121,14 +120,7 @@ const Home = () => {
   }));
   const visibleImages = galleryImages.slice(0, Math.min(visibleCount, galleryImages.length));
 
-  const accounts = [
-    { id: 'groom-father', side: 'groom', holder: '송의권', bank: '기업은행', number: '02702386502020' },
-    { id: 'groom-mother', side: 'groom', holder: '안정자', bank: '국민은행', number: '801210686637' },
-    { id: 'groom', side: 'groom', holder: '송윤제', bank: '카카오뱅크', number: '3333-130303-305' },
-    { id: 'bride-father', side: 'bride', holder: '이남일', bank: 'SC제일은행', number: '65820135518' },
-    { id: 'bride-mother', side: 'bride', holder: '최선자', bank: '국민은행', number: '810210418001' },
-    { id: 'bride', side: 'bride', holder: '이미현', bank: '카카오뱅크', number: '3333-119961-609' },
-  ];
+  // 계좌 섹션은 현재 숨김 처리되어 있어 관련 데이터 제거
 
   // 2026-01-24 달력 생성 (컴퓨터 기준으로 유동 계산, 월은 weddingInfo.dateISO 기준)
   const calendarWeeks = useMemo(() => {
@@ -306,16 +298,6 @@ const Home = () => {
     setContentShown(false);
     return undefined;
   }, [contentVisible]);
-
-  const handleCopyAccount = async (text, id) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      setCopiedAccountId(id);
-      setTimeout(() => setCopiedAccountId(null), 1500);
-    } catch {
-      alert('복사에 실패했어요. 직접 선택해 복사해주세요.');
-    }
-  };
 
   const closeViewer = () => {
     setViewerOpen(false);
