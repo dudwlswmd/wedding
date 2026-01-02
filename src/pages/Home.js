@@ -5,8 +5,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import '../styles/Home.css';
-import mainImage from '../assets/images/main.png';
-import introImageB from '../assets/images/01.jpeg';
+import mainImage from '../assets/images/main.jpeg';
+import introImageA from '../assets/images/intro.png';
+import introImageB from '../assets/images/intro_b.jpeg';
 
 const Home = () => {
   // 갤러리 로컬 이미지 임포트
@@ -309,7 +310,7 @@ const Home = () => {
     <div className="home">
       {showIntroA && (
         <div className="introA">
-          <img className="introA__image" src={mainImage} alt="intro A" />
+          <img className="introA__image" src={introImageA} alt="intro A" />
           <h1 className="introA__title">
             <span className="introA__title__lover">LOVER</span>
             <span className="introA__title__of">OF</span>
